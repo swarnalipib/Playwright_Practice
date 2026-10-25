@@ -40,9 +40,33 @@ await page.getByRole( 'button',{type:'submit'} ).click();
 const name = await page.locator('p[class="oxd-userdropdown-name"]').textContent(); //textContent will capture/fetch the text
 await expect (await page.getByText(name)).toBeVisible();
 
-
+/*
 //page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
 //await page.getByTestId('directions').click();
+When to use testid locators
+You can also use test ids when you choose to use the test id methodology or when you can't locate by role or text.
+
+Set a custom test id attribute
+By default, page.getByTestId() will locate elements based on the data-testid attribute, but you can configure it in your test config or by calling selectors.setTestIdAttribute().
+
+Set the test id to use a custom data attribute for your tests.
+
+playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  use: {
+    testIdAttribute: 'data-pw'
+  }
+});
+
+In your html you can now use data-pw as your test id instead of the default data-testid.
+
+<button data-pw="directions">Itinéraire</button>
+
+And then locate the element as you would normally do:
+
+await page.getByTestId('directions').click(); */
 
 
 });

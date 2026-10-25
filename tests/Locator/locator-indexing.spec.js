@@ -11,7 +11,7 @@ Indexing Methods in Playwright
 
 const {test,expect} = require("@playwright/test");
 
-test ('indexinglocators',async({page}) => {
+test ('Flipkart indexinglocators',async({page}) => {
 
 await page.goto("https://www.flipkart.com/");
 await expect(page).toHaveURL("https://www.flipkart.com/");
