@@ -10,7 +10,7 @@ test('Single File upload',async({page}) => {
  await page.click("//button[@id='fileSubmit']");
 });
 
-test.only('Multiple File upload',async({page}) => {
+test('Multiple File upload',async({page}) => {
 
  await page.goto("https://davidwalsh.name/demo/multiple-file-upload.php");
 

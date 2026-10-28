@@ -1,6 +1,6 @@
 const {test,chromium,firefox,webkit} = require("@playwright/test");
 
-test.only('chrome browser',(async() => {
+test('chrome browser',(async() => {
 
     const chromiumBrowser = await chromium.launch({headless:false});
     const chromiumContext = await chromiumBrowser.newContext();

@@ -37,7 +37,7 @@ test('view port',async() =>{
 
 });
 
-test.only('new view port ',async() => {
+test('new view port ',async() => {
    const browser = await chromium.launch({headless:false});
    const context = await browser.newContext();
    const page = await context.newPage();

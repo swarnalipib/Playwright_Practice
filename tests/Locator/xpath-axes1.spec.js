@@ -52,7 +52,7 @@ test ('xpath axes',async({page}) => {
 
 });
 
-test.only('Extra methods',async({page}) => {
+test('Extra methods',async({page}) => {
 
     //  await page.goto("https://www.w3schools.com/html/html_tables.asp");
 

@@ -14,7 +14,7 @@ test('test', async () => {
 
 });
 
-test.only('test1', async () => {
+test('test1', async () => {
  const browser = await chromium.launch({headless:false});//adding in config
    const context = await browser.newContext();
    const page = await context.newPage();

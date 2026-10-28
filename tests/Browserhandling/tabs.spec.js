@@ -1,6 +1,6 @@
 const {test,expect,chromium} = require("@playwright/test");
 
-test.only('To check new tab',(async() => {
+test('To check new tab',(async() => {
 
     const chromiumBrowser = await chromium.launch({headless:false});
     const Context = await chromiumBrowser.newContext();

@@ -1,6 +1,6 @@
 const {test,expect} = require("@playwright/test");
 
-// test.only('Mouse hover test',async({page}) => {
+// test('Mouse hover test',async({page}) => {
 
 // await page.goto("https://demo.opencart.com/");
 // await page.locator("//a[normalize-space()='Desktops']");
@@ -33,3 +33,5 @@ await expect(elementone).toHaveText('Moishe House');
 await page.waitForTimeout(5000);
 
 });
+
+//focus vs hover
