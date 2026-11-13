@@ -1,3 +1,5 @@
+/*
+
 const heading = page.locator('h1');
 
 // Extract text
@@ -57,3 +59,5 @@ await expect(locator).toBeChecked();
 await expect(locator).toBeDisabled();
 await expect(locator).toHaveAttribute('type', 'email');
 await expect(locator).toHaveCount(3);
+
+*/

@@ -209,7 +209,7 @@ test('wait for a search request', async ({ page }) => {
 //9.page.waitForTimeout() — wait for a fixed duration
 //Fixed elapsed time and used for Temporary debugging
 
-test.only('fixed delay example', async ({ page }) => {
+test('fixed delay example', async ({ page }) => {
   await page.goto('https://www.amazon.in/');
 
   await page.waitForTimeout(3000);

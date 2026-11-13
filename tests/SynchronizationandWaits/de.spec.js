@@ -18,7 +18,7 @@ test('wait for search suggestions to detach', async ({ page }) => {
 
 });
 
-test.only('wait for to detach', async ({ page }) => {
+test('wait for to detach', async ({ page }) => {
   await page.goto('https://www.amazon.in/');
 
   const searchBox = page.locator('#twotabsearchtextbox');

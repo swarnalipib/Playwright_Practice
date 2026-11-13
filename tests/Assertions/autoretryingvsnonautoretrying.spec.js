@@ -102,7 +102,7 @@ test('check username visibility', async ({ page }) => {
 
 //Example 2 Login is enabled
 
-test.only('check login button enabled state', async ({ page }) => {
+test('check login button enabled state', async ({ page }) => {
   // Navigate to the page
   await page.goto('https://parabank.parasoft.com/parabank/index.htm');
 

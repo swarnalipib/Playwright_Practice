@@ -133,7 +133,7 @@ expect.extend({
   }
 });
 
-test.only('username field should be visible', async ({ page }) => {
+test('username field should be visible', async ({ page }) => {
   await page.goto(
     'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
   );
