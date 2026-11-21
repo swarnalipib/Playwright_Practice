@@ -45,43 +45,74 @@ test('date picker1',async({page}) => {
 
 
 
-test('date picker2', async ({ page }) => {
+// test.only('date picker2', async ({ page }) => {
 
-    await page.goto("https://testautomationpractice.blogspot.com/");
+//     await page.goto("https://testautomationpractice.blogspot.com/");
 
-    const year = "2024";
-    const month = "Mar";
-    const date = "25";
+//     const year = "2024";
+//     const month = "Mar";
+//     const date = "25";
 
-    await page.locator("#txtDate").click();
+//     await page.locator("#txtDate").click();
 
-    await expect(await page.locator("#txtDate")).toBeVisible();
+//     await expect(await page.locator("#txtDate")).toBeVisible();
 
-    // Select year and month directly
-    await page.locator(".ui-datepicker-year").selectOption({ label: year });
-    await expect(await page.locator(".ui-datepicker-year")).toHaveValue(year);
-    await page.locator(".ui-datepicker-month").selectOption({ label: month });
-    await expect(await page.locator(".ui-datepicker-month")).toBeVisible();
+//     // Select year and month directly
+//     await page.locator(".ui-datepicker-year").selectOption({ label: year });
+//     await expect(await page.locator(".ui-datepicker-year")).toHaveValue(year);
+//      await page.waitForTimeout(5000);
+//     await page.locator(".ui-datepicker-month").selectOption({ label: month });
+//     await expect(await page.locator(".ui-datepicker-month")).toBeVisible();
+//      await page.waitForTimeout(5000);
 
-    // Select the required date
-    const dates = await page.$$(".ui-datepicker-calendar td a");
+//     // Select the required date
+//     const dates = await page.$$(".ui-datepicker-calendar td a");
 
 
-    for (let d of dates) {
+//     for (let d of dates) {
 
-        if(d.textContent() ==date)
-        {
-            await d.click();
-            break;
-        }
+//         if(d.textContent() ==date)
+//         {
+//             await d.click();
+//             break;
+//         }
 
-    }
+//     }
 
-    //or
-    //await page.click("//a[class="ui-state-default"][text()='25']");
-    //await page.click(`//a[class="ui-state-default"][text()='${date}']`);
+//     //or
+//     //await page.click("//a[class="ui-state-default"][text()='25']");
+//     //await page.click(`//a[class="ui-state-default"][text()='${date}']`);
 
+//     await page.waitForTimeout(6000);
+
+// });
+
+test('Handle Date Picker 2', async ({ page }) => {
+
+    // Open website
+    await page.goto('https://testautomationpractice.blogspot.com/');
+
+    // Click on Date Picker 2
+    await page.locator('#txtDate').click();
+
+    // Select month
+    await page.locator('.ui-datepicker-month').selectOption('4');
     await page.waitForTimeout(5000);
+
+    // Select year
+    await page.locator('.ui-datepicker-year').selectOption('2026');
+    await page.waitForTimeout(5000);
+
+    // Select date 15
+    await page.locator('//td//a[text()="15"]').click();
+    await page.waitForTimeout(5000);
+
+    // Verify selected date
+    const date = await page.locator('#txtDate').inputValue();
+
+    console.log('Selected Date:', date);
+
+
 
 });
 

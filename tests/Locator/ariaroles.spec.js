@@ -55,3 +55,17 @@ await page.getByRole('button', { name: 'Continue' }).click();
 
 
 });
+
+/*
+In Playwright, exact: true inside getByRole() forces the accessible name match to be case-sensitive 
+and match the entire string, preventing partial substring matches.
+
+How exact Changes Matching Behavior
+
+By default (exact: false), Playwright performs a case-insensitive substring match on the element's accessible name. Setting exact: true enforces strict equality.
+
+Locator Call	                                        Matches <button>Submit</button>  	Matches <button>submit</button>	  Matches <button>Submit Form</button>
+getByRole('button', { name: 'Submit' })	                 Yes	                             Yes	                                Yes
+getByRole('button', { name: 'Submit', exact: true })     Yes                                 No                                     No
+
+*/

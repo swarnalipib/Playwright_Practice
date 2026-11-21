@@ -2,7 +2,7 @@ import { test,expect } from '@playwright/test';
 
 test.describe('Demoglaze site', () => {
   // Configure all tests inside this describe block to run in parallel
-  //test.describe.configure({ mode: 'parallel' });
+  test.describe.configure({ mode: 'parallel' });//change mode to default or serial
   // BEFORE ALL - Executes once
     test.beforeAll(async () => {
 
@@ -90,7 +90,7 @@ test.describe('Demoglaze site', () => {
 
 Playwright runs your 12 total test instances (6 tests × 2 browsers) by placing them in a central queue and feeding them to 3 independent worker processes as they become free.
 
-Playwright Execution Workflow Diagram
+Playwright Execution Workflow Diagram for parallel mode
 
 text
                        [ TEST QUEUE: 12 Total Runs ]
@@ -132,5 +132,40 @@ text
          │                           │                           │
          ▼                           ▼                           ▼
    [afterAll()]                [afterAll()]                [afterAll()]
+
+   */
+
+
+   /*
+   workflow of default mode 
+   ----------------------------
+   1. SUITE INITIALIZATION
+=======================================================================
+   [ test.beforeAll ] ──► Logs: "Test Suite Started" (Runs ONCE)
+          │
+          ▼
+=======================================================================
+2. TEST EXECUTION LOOP (Repeats for Tests 1 through 6)
+=======================================================================
+          │
+   ┌──────┴────────────────────────────────────────────────────┐
+   │  FOR EACH TEST CASE (test1 ──► test2 ──► ... ──► test6):  │
+   │                                                           │
+   │    1. [ test.beforeEach ]                                 │
+   │         └─► Logs: "Opening Demoblaze and logging in"      │
+   │                                                           │
+   │    2. [ test('testX: ...') ]                              │
+   │         └─► Logs: "... verified for testX"                │
+   │                                                           │
+   │    3. [ test.afterEach ]                                  │
+   │         └─► Logs: "Logging out from Demoblaze"            │
+   │                                                           │
+   └──────┬────────────────────────────────────────────────────┘
+          │ (Proceeds to next test until all 6 are done)
+          ▼
+=======================================================================
+3. SUITE TEARDOWN
+=======================================================================
+   [ test.afterAll ] ──► Logs: "All test cases completed" (Runs ONCE)
 
    */

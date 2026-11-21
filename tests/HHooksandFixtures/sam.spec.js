@@ -17,10 +17,17 @@ await expect(page.locator('#twotabsearchtextbox')).toBeVisible();
 
 test ('Test3:Search laptop',async({page}) => {
 
-await page.goto("https://www.amazon.in/");
-await page.locator('#twotabsearchtextbox').fill('laptop');
-await page.click('#nav-search-submit-button');
-await expect(page).toHaveURL(/.*search.*laptop/);
+const searchBox = page.getByRole('searchbox');
+  await expect(searchBox).toBeVisible();
+  await searchBox.fill('laptop');
+
+  // 3. Verify the submit button is visible before clicking it
+  const submitButton = page.locator('#nav-search-submit-button');
+  await expect(submitButton).toBeVisible();
+  await submitButton.click();
+
+  // 4. Verify the URL contains the search query using Regex
+  await expect(page).toHaveURL(/https:\/\/www\.amazon\.in\/s\?k=laptop.*/);
 
 });
 

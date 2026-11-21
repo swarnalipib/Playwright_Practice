@@ -1,22 +1,25 @@
-async function selectDateTime(page, date, time) {
+async function selectDateTime(page, expect,date, time) {
 
-    await page.locator('#dateAndTimePickerInput').click();
+  const dateInput = page.locator('#dateAndTimePickerInput');
+  await dateInput.click();
 
-    // Select date
-    const dateLocator = page.locator(
-      `.react-datepicker__day:not(.react-datepicker__day--outside-month)[aria-label*="${date}"]`
-    );
-    await expect(dateLocator).toHaveValue(date);
+   
+  // Use backticks (`) for template literals so ${date} and ${time} work
 
-    await dateLocator.click();
-
-    // Select time
-    await page.locator('.react-datepicker__time-list-item')
-      .filter({ hasText: new RegExp(`^${time}$`) })
-      .click();
+  const dated = page.locator(`.react-datepicker__day:not(.react-datepicker__day--outside-month)[aria-label*="${date}"]`);
+  
+  await dated.click();
+ //await page.waitForTimeout(5000);
+  // Select time directly using exact text match
+  await page.locator('.react-datepicker__time-list-item')
+    .filter({ hasText: new RegExp(`^${time}$`) })
+    .click();
+    
 
     console.log("Selected Date:", date);
     console.log("Selected Time:", time);
+    console.log(await page.locator('#dateAndTimePickerInput').inputValue());
+    
 }
 
 module.exports = { selectDateTime };
